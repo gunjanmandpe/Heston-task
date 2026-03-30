@@ -45,9 +45,9 @@ body {
 }
 
 .logo-img {
-  height: 130px;
+  height: 160px;
   width: auto;
-  max-width: 380px;
+  max-width: 450px;
   object-fit: contain;
 }
 
@@ -212,7 +212,7 @@ body {
   flex-direction: column;
   align-items: center;
   background: linear-gradient(180deg, #ffffff 0%, #dcecff 100%);
-  padding: 60px 20px 40px;
+  padding: 20px 20px 40px;
 }
 
 .hero-content {
@@ -227,6 +227,7 @@ body {
   font-weight: 700;
   color: #111;
   line-height: 1.2;
+  margin: 5px 0;
 }
 
 .hero-content h1 strong {
@@ -249,7 +250,7 @@ body {
   font-size: 36px;
   font-weight: 700;
   border-radius: 8px;
-  margin: 10px 0;
+  margin: 8px 0;
 }
 
 /* DESCRIPTION */
@@ -414,7 +415,8 @@ body {
 .video-card {
   position: relative;
   width: 100%;
-  max-width: 550px;
+  max-width: 480px; /* Reduced to match testimony thumbnail size */
+  margin-left: auto;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -544,6 +546,7 @@ body {
 .testimony-left {
   flex: 1;
   min-width: 350px;
+  max-width: 480px; /* Consistent with other video thumbnails */
   display: flex;
   justify-content: flex-start;
 }
@@ -2875,6 +2878,8 @@ body {
 
 .video-card {
   width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
   background: black;
   border-radius: 12px;
 }
@@ -2950,27 +2955,41 @@ body {
 }
 
 .drawer-header {
-  background: #fff;
-  padding: 10px 20px;
+  background: #ffffff;
+  padding: 15px 25px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   min-height: 80px;
-  border-bottom: 2px solid #eee;
+  border-bottom: 2px solid #f0f0f0;
   box-sizing: border-box;
   width: 100%;
+  position: relative;
 }
 
 .drawer-close {
-  background: none;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #f4f4f4;
   border: none;
-  font-size: 32px;
-  color: #333;
+  font-size: 26px;
+  color: #111;
   cursor: pointer;
-  padding: 5px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.drawer-close:hover {
+  background: #1a4fdb;
+  color: #fff;
 }
 
 .logo-img-small {
@@ -3094,13 +3113,14 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 18px 25px 18px 45px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 22px 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   color: #fff;
-  font-size: 18px;
-  font-weight: 500;
+  font-size: 19px;
+  font-weight: 600;
   cursor: pointer;
   text-align: left;
+  letter-spacing: 0.3px;
 }
 
 .drawer-submenu {
@@ -3143,8 +3163,8 @@ body {
   }
 
   .logo-img {
-    height: 60px !important;
-    max-width: 200px !important;
+    height: 90px !important;
+    max-width: 250px !important;
   }
 
   .hero-content h1 {
@@ -3183,15 +3203,44 @@ body {
 
   .git-left, .git-right {
     width: 100% !important;
+    text-align: center !important;
+  }
+
+  .git-heading {
+    font-size: 36px !important;
+    letter-spacing: -1px !important;
+    margin-bottom: 15px !important;
+  }
+
+  .git-desc {
+    font-size: 15px !important;
+    margin: 0 auto 30px !important;
   }
 
   .git-contact-box {
     width: 100% !important;
     align-items: center !important;
+    gap: 15px !important;
   }
 
   .git-phone-row {
-    justify-content: center !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    text-align: center !important;
+  }
+
+  .git-phone-icon {
+    font-size: 24px !important;
+  }
+
+  .git-number {
+    font-size: 26px !important;
+    letter-spacing: 0 !important;
+  }
+
+  .git-reach-tag {
+    font-size: 10px !important;
+    margin-bottom: 5px !important;
   }
 
   .case-title {
@@ -3276,8 +3325,8 @@ body {
   }
 
   .logo-img {
-    height: 60px !important;
-    max-width: 240px !important;
+    height: 80px !important;
+    max-width: 260px !important;
   }
 
   .ratings {
@@ -3300,15 +3349,21 @@ body {
     margin: 0 auto !important;
   }
 
+  .hero-section {
+    padding-top: 10px !important;
+  }
+
   .hero-content h1 {
-    font-size: 24px !important;
-    line-height: 1.2 !important;
+    font-size: 32px !important;
+    line-height: 1.15 !important;
     word-wrap: break-word !important;
+    margin: 5px 0 !important;
   }
 
   .highlight {
-    font-size: 19px !important;
-    padding: 8px 12px !important;
+    font-size: 24px !important;
+    padding: 6px 16px !important;
+    margin: 5px 0 !important;
   }
 
   .hero-desc {
@@ -3339,4 +3394,417 @@ body {
   .mobile-toggle {
     gap: 3px !important;
   }
+
+  /* CUSTOM OVERRIDES FOR HELPING SECTION & STATS */
+  .helping-section {
+    padding: 70px 20px 30px !important;
+    background: transparent !important;
+  }
+
+  .helping-heading {
+    font-size: 38px !important;
+    font-weight: 900 !important;
+    line-height: 1.05 !important;
+    text-align: center !important;
+    margin-bottom: 20px !important;
+    letter-spacing: -1.5px !important;
+    color: #08060d !important;
+  }
+
+  .helping-desc {
+    font-size: 15px !important;
+    text-align: center !important;
+    margin-bottom: 45px !important;
+    line-height: 1.5 !important;
+    color: #444 !important;
+    max-width: 90% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .stats-grid {
+    flex-direction: column !important;
+    gap: 35px !important;
+    width: 100% !important;
+    align-items: center !important;
+    padding: 0 !important;
+  }
+
+  .stat-item {
+    width: 100% !important;
+    flex: none !important;
+    padding: 0 !important;
+    border-right: none !important;
+    border-bottom: 1px solid rgba(0,0,0,0.05) !important;
+    padding-bottom: 20px !important;
+    text-align: center !important;
+  }
+
+  .stat-item:last-child {
+    border-bottom: none !important;
+    padding-left: 0 !important;
+  }
+
+  .stat-item:nth-child(2) {
+    padding-left: 0 !important;
+  }
+
+  .stat-item h3 {
+    font-size: 48px !important;
+    margin-bottom: 5px !important;
+  }
+
+  .stat-item p {
+    font-size: 10px !important;
+    max-width: 100% !important;
+  }
+
+  /* Fix for splitting/overflow of sections */
+  .gradient-section-wrapper {
+    overflow: hidden !important;
+  }
+
+  .helping-section, .trusted-clients-section {
+    padding: 60px 15px !important;
+  }
+
+  .trusted-clients-heading {
+    font-size: 32px !important;
+    text-align: center !important;
+    margin-bottom: 40px !important;
+  }
+
+  .clients-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 25px !important;
+    row-gap: 40px !important;
+  }
+
+  .client-item {
+    font-size: 14px !important;
+    flex-direction: column !important;
+    text-align: center !important;
+  }
+
+  .mock-logo-circle {
+    width: 24px !important;
+    height: 24px !important;
+    font-size: 12px !important;
+  }
+
+  /* FORM / MODAL RESPONSIVENESS */
+  .quote-modal {
+    width: 95% !important;
+    max-width: 100% !important;
+    padding: 30px 20px !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+    margin: 20px auto !important;
+  }
+
+  .modal-heading {
+    font-size: 20px !important;
+  }
+
+  .modal-sub {
+    font-size: 14px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .form-row {
+    flex-direction: row !important; /* Keep prefix and phone together */
+    gap: 0 !important;
+  }
+
+  .phone-prefix {
+    padding: 0 10px !important;
+    font-size: 12px !important;
+  }
+
+  .btn-get-quote {
+    width: 100% !important;
+  }
+
+  .captcha-row input {
+    width: 100% !important;
+  }
+
+  /* OTHER TESTIMONIALS FIX */
+  .other-testimonials-header {
+    font-size: 28px !important;
+    margin-bottom: 30px !important;
+  }
+
+  .testimonials-carousel {
+    gap: 15px !important;
+    padding-bottom: 15px !important;
+  }
+
+  .testimonial-card {
+    min-width: 250px !important;
+    max-width: 250px !important;
+  }
+
+  /* WHY OYELABS SECTION FIX */
+  .why-oyelabs-header h2 {
+    font-size: 28px !important;
+    margin-bottom: 15px !important;
+  }
+
+  .why-oyelabs-header p {
+    font-size: 14px !important;
+  }
+
+  .blue-card {
+    min-width: 280px !important;
+    max-width: 280px !important;
+    padding: 25px 20px !important;
+  }
+
+  .blue-card h4 {
+    font-size: 16px !important;
+  }
+
+  .blue-card p {
+    font-size: 13px !important;
+  }
+
+  /* REAL RESULTS SECTION FIX */
+  .real-results-section {
+    padding: 60px 15px !important;
+  }
+
+  .real-results-heading {
+    font-size: 28px !important;
+    text-align: center !important;
+  }
+
+  .real-results-sub {
+    text-align: center !important;
+  }
+
+  .real-results-link {
+    display: block !important;
+    text-align: center !important;
+    margin-bottom: 30px !important;
+  }
+
+  .real-results-content {
+    flex-direction: column !important;
+    gap: 30px !important;
+    padding: 0 !important;
+  }
+
+  .real-results-left, .real-results-right {
+    width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .case-title {
+    font-size: 22px !important;
+    text-align: center !important;
+  }
+
+  .case-nav-btn {
+    display: none !important; /* Hide circular nav buttons on mobile to avoid overlap */
+  }
+
+  .case-study-info {
+    text-align: center !important;
+  }
+
+  /* PREBUILT SOLUTIONS FIX */
+  .prebuilt-heading {
+    font-size: 28px !important;
+  }
+
+  .prebuilt-sub {
+    font-size: 18px !important;
+  }
+
+  .prebuilt-desc {
+    font-size: 14px !important;
+  }
+
+  .solution-card {
+    padding: 15px !important;
+  }
+
+  .solution-title {
+    font-size: 17px !important;
+  }
+
+  .laptop-mockup {
+    width: 160px !important;
+  }
+
+  .laptop-screen {
+    width: 160px !important;
+    height: 100px !important;
+  }
+
+  .laptop-base {
+    width: 190px !important;
+    margin-left: -15px !important;
+  }
+
+  .mobile-mockup {
+    width: 50px !important;
+    height: 100px !important;
+    bottom: 20px !important;
+    right: 10px !important;
+  }
+
+  /* ACHIEVEMENTS BLOCK */
+  .badges-container {
+    justify-content: center !important;
+  }
+
+  .achievement-badge {
+    width: 90px !important;
+    height: 90px !important;
+    font-size: 9px !important;
+  }
+
+  /* DEMO VIDEOS */
+  .demo-videos-heading {
+    font-size: 28px !important;
+    text-align: center !important;
+  }
+
+  .demo-card-visual {
+    height: 200px !important;
+    padding: 15px !important;
+  }
+
+  .demo-phone-mockup {
+    width: 90px !important;
+    height: 150px !important;
+  }
+
+  .demo-card-text h3 {
+    font-size: 14px !important;
+  }
+
+  /* FOOTER */
+  .footer-col {
+    text-align: center !important;
+  }
+
+  .footer-badges {
+    justify-content: center !important;
+  }
+
+  .footer-socials {
+    justify-content: center !important;
+  }
+
+  .footer-bottom {
+    flex-direction: column !important;
+    gap: 15px !important;
+    text-align: center !important;
+  }
+
+  .online-tab, .fixed-online-badge {
+    display: none !important; /* Hide fixed online badge/tabs as requested */
+  }
+
+  .online-tab {
+    bottom: 0 !important;
+  }
+
+  .whatsapp-float {
+    width: 50px !important;
+    height: 50px !important;
+    bottom: 60px !important;
+    right: 15px !important;
+  }
+
+
+  /* VIDEO MODAL MOBILE FIX */
+  .modal-overlay {
+    padding: 15px !important;
+  }
+
+  .video-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .video-iframe {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16/9 !important;
+  }
+
+  /* TESTIMONY REFINEMENT */
+  .testimony-header h2 {
+    font-size: 32px !important;
+    text-align: center !important;
+  }
+
+  .testimony-header .testimony-sub {
+    text-align: center !important;
+    display: block !important;
+  }
+
+  .testimony-content {
+    flex-direction: column !important;
+    gap: 30px !important;
+  }
+
+  .testimony-left, .testimony-right {
+    min-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .testimony-right h3 {
+    font-size: 24px !important;
+    text-align: center !important;
+    margin-bottom: 20px !important;
+  }
+
+  /* Global overflow fix */
+  html, body {
+    overflow-x: hidden !important;
+    position: relative !important;
+  }
+}
+
+/* GLOBALLY SCOPED TOAST STYLE */
+.custom-toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111;
+  color: #fff;
+  padding: 15px 25px;
+  border-radius: 50px;
+  z-index: 100000;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  border: 1px solid #333;
+  animation: toastSlideDown 0.4s ease forwards;
+}
+
+.toast-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.toast-icon {
+  font-size: 20px;
+}
+
+.custom-toast p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+@keyframes toastSlideDown {
+  from { transform: translate(-50%, -100px); opacity: 0; }
+  to { transform: translate(-50%, 0); opacity: 1; }
 }

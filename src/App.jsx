@@ -31,12 +31,30 @@ function App() {
   const [caseStudyIndex, setCaseStudyIndex] = useState(0);
   const [activeFaq, setActiveFaq] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [showTestiModal, setShowTestiModal] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [productsExpanded, setProductsExpanded] = useState(false);
+  const [captcha, setCaptcha] = useState('');
+  const [captchaError, setCaptchaError] = useState(false);
+  const [showToast, setShowToast] = useState(false);
 
   const toggleModal = () => setShowModal(!showModal);
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
   const toggleProducts = () => setProductsExpanded(!productsExpanded);
+
+  const handleGitSubmit = (e) => {
+    if (e) e.preventDefault();
+    const inputVal = document.getElementById('captcha-input')?.value;
+    if (inputVal === '12') {
+      setCaptchaError(false);
+      setShowToast(true);
+      setTimeout(() => setShowToast(false), 3000);
+      if (document.getElementById('captcha-input')) document.getElementById('captcha-input').value = '';
+      setShowModal(false);
+    } else {
+      setCaptchaError(true);
+    }
+  };
 
   const faqs = [
     {
@@ -257,7 +275,7 @@ function App() {
               </>
             )}
           </div>
-          <div className="mobile-dots">•••</div>
+          {/* Removed mobile-dots as per request */}
         </div>
       </header>
 
@@ -312,16 +330,15 @@ function App() {
           <div className="online-badge">
             <span className="dot-blink"></span>
             Online
-            <div className="badge-count">1</div>
-          </div>
+        </div>
         </div>
       </div>
 
-      <div className="whatsapp-float">
+      <a href="https://wa.me/917696921829" target="_blank" rel="noopener noreferrer" className="whatsapp-float">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
-      </div>
+      </a>
 
-      <div className="fixed-online-badge">
+      <div className="fixed-online-badge desktop-only">
         <span className="dot-blink"></span>
         Online
         <div className="badge-count">1</div>
@@ -493,51 +510,6 @@ function App() {
         </div>
       </section>
 
-      {/* CLIENTS SECTION */}
-      <section className="clients-section">
-        <h2 className="clients-title">Trusted <span>Clients</span></h2>
-        <div className="clients-grid">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Starbucks_Corporation_Logo_2011.svg" alt="Starbucks" />
-          <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Tata_logo.svg" alt="Tata" />
-          <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Vodafone_logo.svg" alt="Vodafone" />
-          <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/McDonald%27s_logo.svg" alt="McDonalds" />
-          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Hindustan_Times_logo.svg" alt="Hindustan Times" />
-          <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/T-Mobile_logo_2022.svg" alt="T-Mobile" />
-        </div>
-      </section>
-
-      {/* TESTIMONIALS SECTION */}
-      <section className="testimonials-section">
-        <div className="testi-header">
-          <h1>Let's Hear From Our Clients</h1>
-          <p>What Do <strong>Clients Say</strong> About Oyelabs?</p>
-        </div>
-
-        <div className="testi-slider-wrapper">
-          <div className="testi-card">
-            <div className="testi-video-placeholder">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800" alt="Client" />
-              <div className="play-button">▶</div>
-              <div className="testi-overlay-info">
-                <h3>Testimony: Nathan Beckles | UK</h3>
-                <p>OyeLabs</p>
-              </div>
-            </div>
-            <div className="testi-info">
-              <h4>Nathan Beckles</h4>
-              <p>Founder | United Kingdom</p>
-            </div>
-            <div className="testi-progress">
-              <div className="progress-fill"></div>
-            </div>
-          </div>
-        </div>
-
-        <button className="cta-testimonials">
-          See what other 50+ clients have to say
-        </button>
-      </section>
-
       {/* OTHER TESTIMONIALS SECTION */}
       <section className="other-testimonials-section">
         <div className="other-testimonials-wrapper">
@@ -563,7 +535,7 @@ function App() {
                 </div>
                 <div className="testimonial-info">
                   <h4>Rita Pedroza</h4>
-                  <p>Excursionist | United States</p>
+                  <p className="text-blue">Excursionist | United States</p>
                 </div>
               </div>
               
@@ -583,7 +555,7 @@ function App() {
                 </div>
                 <div className="testimonial-info">
                   <h4>Alejandro Trejo</h4>
-                  <p>Kwiki | Mexico</p>
+                  <p className="text-blue">Kwiki | Mexico</p>
                 </div>
               </div>
 
@@ -603,7 +575,7 @@ function App() {
                 </div>
                 <div className="testimonial-info">
                   <h4>Brian McDaniel</h4>
-                  <p>Fall-in | United States</p>
+                  <p className="text-blue">Fall-in | United States</p>
                 </div>
               </div>
 
@@ -623,15 +595,14 @@ function App() {
                 </div>
                 <div className="testimonial-info">
                   <h4>Angelica</h4>
-                  <p>Philregis | Philippines</p>
+                  <p className="text-blue">Philregis | Philippines</p>
                 </div>
               </div>
             </div>
-            {/* Scrollbar is handled purely via CSS to match the web browser's native capabilities elegantly */}
           </div>
 
-          <div className="testimonials-action">
-            <button className="btn-blue-solid">See what other 50+ clients have to say</button>
+          <div className="testimonials-action" style={{textAlign: 'center', marginTop: '40px'}}>
+            <button className="btn-blue-solid" style={{padding: '16px 40px', fontSize: '18px'}}>See what other 50+ clients have to say</button>
           </div>
         </div>
       </section>
@@ -1522,7 +1493,7 @@ function App() {
                   <p className="git-number">+91-7696921829</p>
                 </div>
               </div>
-              <a href="#" className="btn-blue-solid git-btn">Let's discuss your idea</a>
+              <button className="btn-blue-solid git-btn" onClick={toggleModal}>Let's discuss your idea</button>
             </div>
           </div>
         </div>
@@ -1596,12 +1567,31 @@ function App() {
               </div>
 
               <div className="captcha-row">
-                <p>What is 6 + 6</p>
-                <input type="text" placeholder="Type your answer" />
+                <p>What is 6 + 6 ?</p>
+                <div style={{display:'flex', flexDirection:'column', gap:'5px'}}>
+                  <input 
+                    id="captcha-input"
+                    type="text" 
+                    placeholder="Answer" 
+                    onChange={() => setCaptchaError(false)}
+                    style={{borderColor: captchaError ? '#ff0000' : ''}}
+                  />
+                  {captchaError && <span style={{color:'#ff0000', fontSize:'12px', fontWeight:'700'}}>Wrong answer! Try again.</span>}
+                </div>
               </div>
 
-              <button type="submit" className="btn-get-quote">Get a Quote</button>
+              <button type="button" className="btn-get-quote" onClick={handleGitSubmit}>Get a Quote</button>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* Toast Notification */}
+      {showToast && (
+        <div className="custom-toast">
+          <div className="toast-content">
+            <span className="toast-icon">✅</span>
+            <p>Thank you! Your request has been submitted successfully.</p>
           </div>
         </div>
       )}
@@ -1725,6 +1715,22 @@ function App() {
         </div>
       </footer>
 
+      {/* TESTIMONY VIDEO MODAL */}
+      {showTestiModal && (
+        <div className="modal-overlay" onClick={() => setShowTestiModal(false)}>
+          <div className="video-card" onClick={(e) => e.stopPropagation()} style={{maxWidth:'800px', width:'95%'}}>
+            <iframe 
+              className="video-iframe"
+              src="https://www.youtube.com/embed/npusle3c8E8?rel=0" 
+              title="Client Testimonial" 
+              frameBorder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowFullScreen
+            ></iframe>
+            <button className="modal-close" onClick={() => setShowTestiModal(false)}>×</button>
+          </div>
+        </div>
+      )}
     </>
   )
 }
